@@ -1,15 +1,14 @@
 import { useParams, useLoaderData } from "react-router-dom";
-import Spinner from "../components/Spinner";
+// import Spinner from "../components/Spinner";
 import JobDetailPage from "../components/JobDetailPage";
 
 
-const JobPage = () => {
-    const {id} = useParams();
-    const job = useLoaderData();
-
+const JobPage = ({deleteJob}) => {
+  const {id} = useParams();
+  const job = useLoaderData();
   return (
     <>
-        <JobDetailPage title={job.title} type={job.type} description={job.description} location={job.location} salary={job.salary} company={job.company}/>
+        <JobDetailPage id={job.id} title={job.title} type={job.type} description={job.description} location={job.location} salary={job.salary} company={job.company} deleteJob={deleteJob}/>
     </>
   )
 };
