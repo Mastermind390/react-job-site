@@ -1,5 +1,6 @@
 import ViewJobsButton from './ViewJobsButton';
 import {Link, useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const JobDetailPage = ({ id, title, type, description, location, salary, company, deleteJob}) => {
 
@@ -10,6 +11,9 @@ const JobDetailPage = ({ id, title, type, description, location, salary, company
         if (!confirm) return;
 
         deleteJob({id : jobId});
+
+        toast.success("delete successfully");
+
         return navigate('/jobs');
     }
 
@@ -79,7 +83,7 @@ const JobDetailPage = ({ id, title, type, description, location, salary, company
                     <div className="bg-white p-6 rounded-lg shadow-md mt-6">
                     <h3 className="text-xl font-bold mb-6">Manage Job</h3>
                     <Link
-                        to={`/job/edit/${id}`}
+                        to={`/edit-job/${id}`}
                         className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                         >Edit Job</Link>
                     <button onClick={()=>onDeleteClick(id)}
